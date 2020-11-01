@@ -5,7 +5,9 @@ import com.budget.enums.OperationType;
 import com.budget.enums.categories.Category;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Card {
     private final LocalDateTime dateTimeOperation;
@@ -58,6 +60,14 @@ public class Card {
 
     public Category getCategory() {
         return category;
+    }
+
+    public LocalDate getDate() {
+        return dateTimeOperation.toLocalDate();
+    }
+
+    public LocalTime getTime() {
+        return dateTimeOperation.toLocalTime();
     }
 
     @Override
