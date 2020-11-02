@@ -7,13 +7,13 @@
     <display-name>Budget</display-name>
 
     <servlet>
-        <servlet-name>cardServlet</servlet-name>
-        <servlet-class>com.budget.web.CardServlet</servlet-class>
+        <servlet-name>accountServlet</servlet-name>
+        <servlet-class>com.budget.web.AccountServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>cardServlet</servlet-name>
-        <url-pattern>/cards</url-pattern>
+        <servlet-name>accountServlet</servlet-name>
+        <url-pattern>/accounts</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class Card {
+public class Account {
     private final LocalDateTime dateTimeOperation;
     private final OperationType operationType;
     private final String cardName;
@@ -19,7 +19,7 @@ public class Card {
     private final String companyPayment;
     private final Category category;
 
-    public Card(LocalDateTime dateTimeOperation, OperationType operationType, String cardName, BankName bankName, BigDecimal amount, String notes, String companyPayment, Category category) {
+    public Account(LocalDateTime dateTimeOperation, OperationType operationType, String cardName, BankName bankName, BigDecimal amount, String notes, String companyPayment, Category category) {
         this.dateTimeOperation = dateTimeOperation;
         this.operationType = operationType;
         this.cardName = cardName;
@@ -72,7 +72,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
+        return "Account{" +
                 "dateTimeOperation=" + dateTimeOperation +
                 ", operationType=" + operationType +
                 ", cardName='" + cardName + '\'' +

@@ -7,7 +7,7 @@ import com.budget.enums.categories.Category;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class CardTo {
+public class AccountTo {
     private final LocalDateTime dateTimeOperation;
     private final OperationType operationType;
     private final String cardName;
@@ -18,7 +18,7 @@ public class CardTo {
     private final Category category;
     private final boolean excess;
 
-    public CardTo(LocalDateTime dateTimeOperation, OperationType operationType, String cardName, BankName bankName, BigDecimal amount, String notes, String companyPayment, Category category, boolean excess) {
+    public AccountTo(LocalDateTime dateTimeOperation, OperationType operationType, String cardName, BankName bankName, BigDecimal amount, String notes, String companyPayment, Category category, boolean excess) {
         this.dateTimeOperation = dateTimeOperation;
         this.operationType = operationType;
         this.cardName = cardName;
@@ -32,7 +32,7 @@ public class CardTo {
 
     @Override
     public String toString() {
-        return "CardTo{" +
+        return "AccountTo{" +
                 "dateTimeOperation=" + dateTimeOperation +
                 ", operationType=" + operationType +
                 ", cardName='" + cardName + '\'' +
