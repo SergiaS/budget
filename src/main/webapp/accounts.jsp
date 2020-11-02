@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://budget.com" %>
+
 <html lang="ru">
 <head>
-    <title>Accounts</title>
+    <title>Accounts transactions</title>
     <style>
         .normal {
             color: green;
@@ -15,7 +18,7 @@
 <body>
     <h3><a href="index.html">Home</a></h3>
     <hr>
-    <h2>Accounts</h2>
+    <h2>Accounts transactions</h2>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
@@ -31,7 +34,8 @@
         <c:forEach items="${accounts}" var="account">
             <jsp:useBean id="account" type="com.budget.model.AccountTo"/>
             <tr class="${account.excess ? 'excess' : 'normal'}">
-                <td>${account.dateTimeOperation}</td>
+<%--                <td>${account.dateTimeOperation.toLocalDate()}, ${account.dateTimeOperation.toLocalTime()}</td>--%>
+                <td>${fn:formatDateTime(account.dateTimeOperation)}</td>
                 <td>${account.operationType}</td>
                 <td>${account.cardName}</td>
                 <td>${account.amount}</td>
