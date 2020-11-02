@@ -16,7 +16,7 @@ import java.time.Month;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class CardsUtil {
+public class AccountsUtil {
     public static void main(String[] args) {
         List<Account> accounts = Arrays.asList(
                 new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 7, 32), OperationType.EXPENSE, "MONO", BankName.MONO, new BigDecimal("-231.86"), "", "Billa", CategorySportEnum.BICYCLE),
