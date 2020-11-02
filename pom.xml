@@ -18,8 +18,8 @@
     </properties>
 
     <build>
-        <finalName>NutritionDB</finalName>
-        <defaultGoal>install</defaultGoal>
+        <finalName>Budget</finalName>
+        <defaultGoal>package</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

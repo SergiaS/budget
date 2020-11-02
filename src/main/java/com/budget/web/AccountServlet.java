@@ -10,6 +10,7 @@ public class AccountServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/accounts.jsp").forward(request, response);
+//        request.getRequestDispatcher("/accounts.jsp").forward(request, response);
+        response.sendRedirect("accounts.jsp");
     }
 }
