@@ -1,6 +1,5 @@
 package com.budget.model;
 
-import com.budget.enums.BankName;
 import com.budget.enums.OperationType;
 import com.budget.enums.categories.Category;
 
@@ -11,19 +10,17 @@ import java.time.LocalTime;
 
 public class Account {
     private final LocalDateTime dateTimeOperation;
-    private final OperationType operationType;
     private final String cardName;
-    private final BankName bankName;
+    private final OperationType operationType;
     private final BigDecimal amount;
     private final String notes;
     private final String companyPayment;
     private final Category category;
 
-    public Account(LocalDateTime dateTimeOperation, OperationType operationType, String cardName, BankName bankName, BigDecimal amount, String notes, String companyPayment, Category category) {
+    public Account(LocalDateTime dateTimeOperation, String cardName, OperationType operationType, BigDecimal amount, String notes, String companyPayment, Category category) {
         this.dateTimeOperation = dateTimeOperation;
-        this.operationType = operationType;
         this.cardName = cardName;
-        this.bankName = bankName;
+        this.operationType = operationType;
         this.amount = amount;
         this.notes = notes;
         this.companyPayment = companyPayment;
@@ -34,16 +31,12 @@ public class Account {
         return dateTimeOperation;
     }
 
-    public OperationType getOperationType() {
-        return operationType;
-    }
-
     public String getCardName() {
         return cardName;
     }
 
-    public BankName getBankName() {
-        return bankName;
+    public OperationType getOperationType() {
+        return operationType;
     }
 
     public BigDecimal getAmount() {
@@ -74,9 +67,8 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "dateTimeOperation=" + dateTimeOperation +
-                ", operationType=" + operationType +
                 ", cardName='" + cardName + '\'' +
-                ", bankName=" + bankName +
+                ", operationType=" + operationType +
                 ", amount=" + amount +
                 ", notes='" + notes + '\'' +
                 ", companyPayment='" + companyPayment + '\'' +

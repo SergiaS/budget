@@ -1,6 +1,5 @@
 package com.budget.util;
 
-import com.budget.enums.BankName;
 import com.budget.enums.OperationType;
 import com.budget.enums.categories.CategoryFinanceEnum;
 import com.budget.enums.categories.CategoryHealthEnum;
@@ -24,14 +23,14 @@ public class AccountsUtil {
     public static final double MONEY_LIMIT_PER_DAY = -500.0;
 
     public static final List<Account> accounts = Arrays.asList(
-            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 7, 32), OperationType.EXPENSE, "MONO", BankName.MONO, new BigDecimal("-231.86"), "", "Billa", CategorySportEnum.BICYCLE),
-            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 9, 47), OperationType.EXPENSE, "MONO", BankName.MONO, new BigDecimal("-107.42"), "", "Silpo", CategorySportEnum.BODYBUILDING),
-            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 10, 12), OperationType.EXPENSE, "PRIVAT", BankName.PRIVAT, new BigDecimal("-50.13"), "", "Fozzy", CategoryHealthEnum.PHARMACY),
-            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 22, 9), OperationType.EXPENSE, "MONO", BankName.MONO, new BigDecimal("-437.11"), "", "Aliexpress", CategoryFinanceEnum.RETURN),
-            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 7, 8), OperationType.INCOME, "MONO", BankName.MONO, new BigDecimal("115.4"), "", "Fozzy", CategorySportEnum.BICYCLE),
-            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 8, 22), OperationType.EXPENSE, "MONO", BankName.MONO, new BigDecimal("-83.28"), "", "Fozzy", CategorySportEnum.BODYBUILDING),
-            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 14, 49), OperationType.EXPENSE, "PRIVAT", BankName.PRIVAT, new BigDecimal("-13.1"), "", "Novus", CategoryHealthEnum.PHARMACY),
-            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 20, 0), OperationType.INCOME, "MONO", BankName.MONO, new BigDecimal("500.0"), "", "OLX", CategoryFinanceEnum.SALE)
+            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 7, 32), "MONO", OperationType.EXPENSE, new BigDecimal("-231.86"), "", "Billa", CategorySportEnum.BICYCLE),
+            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 9, 47), "MONO", OperationType.EXPENSE, new BigDecimal("-107.42"), "", "Silpo", CategorySportEnum.BODYBUILDING),
+            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 10, 12), "PRIVAT", OperationType.EXPENSE, new BigDecimal("-50.13"), "", "Fozzy", CategoryHealthEnum.PHARMACY),
+            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 22, 9), "MONO", OperationType.EXPENSE, new BigDecimal("-437.11"), "", "Aliexpress", CategoryFinanceEnum.RETURN),
+            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 7, 8), "MONO", OperationType.INCOME, new BigDecimal("115.4"), "", "Fozzy", CategoryFinanceEnum.RETURN),
+            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 8, 22), "MONO", OperationType.EXPENSE, new BigDecimal("-83.28"), "", "Fozzy", CategorySportEnum.BODYBUILDING),
+            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 14, 49), "PRIVAT", OperationType.EXPENSE, new BigDecimal("-13.1"), "", "Novus", CategoryHealthEnum.PHARMACY),
+            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 20, 0), "MONO", OperationType.INCOME, new BigDecimal("500.0"), "", "OLX", CategoryFinanceEnum.SALE)
     );
 
     public static void main(String[] args) {
@@ -60,6 +59,6 @@ public class AccountsUtil {
     }
 
     public static AccountTo createTo(Account account, boolean excess) {
-        return new AccountTo(account.getDateTimeOperation(), account.getOperationType(), account.getCardName(), account.getBankName(), account.getAmount(), account.getNotes(), account.getCompanyPayment(), account.getCategory(), excess);
+        return new AccountTo(account.getDateTimeOperation(), account.getCardName(), account.getOperationType(), account.getAmount(), account.getNotes(), account.getCompanyPayment(), account.getCategory(), excess);
     }
 }

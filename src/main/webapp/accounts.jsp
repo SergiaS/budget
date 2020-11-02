@@ -22,7 +22,6 @@
             <th>Date and Time</th>
             <th>Operation</th>
             <th>Card Name</th>
-            <th>Bank Name</th>
             <th>Amount</th>
             <th>Notes</th>
             <th>Company Payment</th>
@@ -35,7 +34,6 @@
                 <td>${account.dateTimeOperation}</td>
                 <td>${account.operationType}</td>
                 <td>${account.cardName}</td>
-                <td>${account.bankName}</td>
                 <td>${account.amount}</td>
                 <td>${account.notes}</td>
                 <td>${account.companyPayment}</td>
