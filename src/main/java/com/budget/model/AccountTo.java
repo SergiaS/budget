@@ -30,6 +30,42 @@ public class AccountTo {
         this.excess = excess;
     }
 
+    public LocalDateTime getDateTimeOperation() {
+        return dateTimeOperation;
+    }
+
+    public OperationType getOperationType() {
+        return operationType;
+    }
+
+    public String getCardName() {
+        return cardName;
+    }
+
+    public BankName getBankName() {
+        return bankName;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public String getCompanyPayment() {
+        return companyPayment;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public boolean isExcess() {
+        return excess;
+    }
+
     @Override
     public String toString() {
         return "AccountTo{" +
