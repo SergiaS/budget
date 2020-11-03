@@ -5,11 +5,12 @@
 
 <html lang="ru">
 <head>
-    <title>Accounts transactions</title>
+    <title>Accounts</title>
     <style>
         .normal {
             color: green;
         }
+
         .excess {
             color: red;
         }
@@ -18,7 +19,8 @@
 <body>
     <h3><a href="index.html">Home</a></h3>
     <hr>
-    <h2>Accounts transactions</h2>
+    <h2>Accounts</h2>
+    <a href="accounts?action=create">Add New Account</a>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
@@ -29,12 +31,13 @@
             <th>Notes</th>
             <th>Company Payment</th>
             <th>Category</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <c:forEach items="${accounts}" var="account">
             <jsp:useBean id="account" type="com.budget.model.AccountTo"/>
             <tr class="${account.excess ? 'excess' : 'normal'}">
-<%--                <td>${account.dateTimeOperation.toLocalDate()}, ${account.dateTimeOperation.toLocalTime()}</td>--%>
                 <td>${fn:formatDateTime(account.dateTimeOperation)}</td>
                 <td>${account.operationType}</td>
                 <td>${account.cardName}</td>
@@ -42,8 +45,9 @@
                 <td>${account.notes}</td>
                 <td>${account.companyPayment}</td>
                 <td>${account.category}</td>
+                <td><a href="accounts?action=update&id=${account.id}">✏️</a></td>
+                <td><a href="accounts?action=delete&id=${account.id}">❌</a></td>
             </tr>
-
         </c:forEach>
     </table>
 </body>

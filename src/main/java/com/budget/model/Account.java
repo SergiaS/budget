@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Account {
+    private Integer id;
     private final LocalDateTime dateTimeOperation;
     private final String cardName;
     private final OperationType operationType;
@@ -18,6 +19,11 @@ public class Account {
     private final Category category;
 
     public Account(LocalDateTime dateTimeOperation, String cardName, OperationType operationType, BigDecimal amount, String notes, String companyPayment, Category category) {
+        this(null, dateTimeOperation, cardName, operationType, amount, notes, companyPayment, category);
+    }
+
+    public Account(Integer id, LocalDateTime dateTimeOperation, String cardName, OperationType operationType, BigDecimal amount, String notes, String companyPayment, Category category) {
+        this.id = id;
         this.dateTimeOperation = dateTimeOperation;
         this.cardName = cardName;
         this.operationType = operationType;
@@ -25,6 +31,14 @@ public class Account {
         this.notes = notes;
         this.companyPayment = companyPayment;
         this.category = category;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalDateTime getDateTimeOperation() {
@@ -63,10 +77,15 @@ public class Account {
         return dateTimeOperation.toLocalTime();
     }
 
+    public boolean isNew() {
+        return id == null;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
-                "dateTimeOperation=" + dateTimeOperation +
+                "id=" + id +
+                ", dateTimeOperation=" + dateTimeOperation +
                 ", cardName='" + cardName + '\'' +
                 ", operationType=" + operationType +
                 ", amount=" + amount +

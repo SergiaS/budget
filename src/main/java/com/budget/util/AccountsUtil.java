@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -37,15 +38,15 @@ public class AccountsUtil {
         System.out.println(getFilteredTos(accounts, -500.0, LocalTime.of(7,0), LocalTime.of(11, 0)));
     }
 
-    public static List<AccountTo> getTos(List<Account> accounts, double moneyPerDay) {
+    public static List<AccountTo> getTos(Collection<Account> accounts, double moneyPerDay) {
         return filterByPredicate(accounts, moneyPerDay, account -> true);
     }
 
-    public static List<AccountTo> getFilteredTos(List<Account> accounts, double moneyPerDay, LocalTime starttime, LocalTime endTime) {
+    public static List<AccountTo> getFilteredTos(Collection<Account> accounts, double moneyPerDay, LocalTime starttime, LocalTime endTime) {
         return filterByPredicate(accounts, moneyPerDay, account -> DateTimeUtil.isBetweenHalfOpen(account.getTime(), starttime, endTime));
     }
 
-    public static List<AccountTo> filterByPredicate(List<Account> accounts, double moneyPerDay, Predicate<Account> filter) {
+    public static List<AccountTo> filterByPredicate(Collection<Account> accounts, double moneyPerDay, Predicate<Account> filter) {
         Map<LocalDate, Double> map = accounts.stream()
                 .collect(
 //                        Collectors.groupingBy(Card::getDate, Collectors.summingDouble(card -> card.getAmount().doubleValue()))
@@ -59,6 +60,6 @@ public class AccountsUtil {
     }
 
     public static AccountTo createTo(Account account, boolean excess) {
-        return new AccountTo(account.getDateTimeOperation(), account.getCardName(), account.getOperationType(), account.getAmount(), account.getNotes(), account.getCompanyPayment(), account.getCategory(), excess);
+        return new AccountTo(account.getId(), account.getDateTimeOperation(), account.getCardName(), account.getOperationType(), account.getAmount(), account.getNotes(), account.getCompanyPayment(), account.getCategory(), excess);
     }
 }

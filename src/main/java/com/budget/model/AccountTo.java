@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class AccountTo {
+    private final Integer id;
     private final LocalDateTime dateTimeOperation;
     private final String cardName;
     private final OperationType operationType;
@@ -16,7 +17,8 @@ public class AccountTo {
     private final Category category;
     private final boolean excess;
 
-    public AccountTo(LocalDateTime dateTimeOperation, String cardName, OperationType operationType, BigDecimal amount, String notes, String companyPayment, Category category, boolean excess) {
+    public AccountTo(Integer id, LocalDateTime dateTimeOperation, String cardName, OperationType operationType, BigDecimal amount, String notes, String companyPayment, Category category, boolean excess) {
+        this.id = id;
         this.dateTimeOperation = dateTimeOperation;
         this.cardName = cardName;
         this.operationType = operationType;
@@ -25,6 +27,10 @@ public class AccountTo {
         this.companyPayment = companyPayment;
         this.category = category;
         this.excess = excess;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public LocalDateTime getDateTimeOperation() {
@@ -62,7 +68,8 @@ public class AccountTo {
     @Override
     public String toString() {
         return "AccountTo{" +
-                "dateTimeOperation=" + dateTimeOperation +
+                "id=" + id +
+                ", dateTimeOperation=" + dateTimeOperation +
                 ", cardName='" + cardName + '\'' +
                 ", operationType=" + operationType +
                 ", amount=" + amount +
