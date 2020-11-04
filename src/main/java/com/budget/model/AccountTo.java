@@ -1,7 +1,7 @@
 package com.budget.model;
 
-import com.budget.enums.OperationType;
-import com.budget.enums.categories.Category;
+import com.budget.enums.CategoryEnum;
+import com.budget.enums.OperationTypeEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -10,14 +10,14 @@ public class AccountTo {
     private final Integer id;
     private final LocalDateTime dateTimeOperation;
     private final String cardName;
-    private final OperationType operationType;
+    private final OperationTypeEnum operationType;
     private final BigDecimal amount;
     private final String notes;
     private final String companyPayment;
-    private final Category category;
+    private final CategoryEnum category;
     private final boolean excess;
 
-    public AccountTo(Integer id, LocalDateTime dateTimeOperation, String cardName, OperationType operationType, BigDecimal amount, String notes, String companyPayment, Category category, boolean excess) {
+    public AccountTo(Integer id, LocalDateTime dateTimeOperation, String cardName, OperationTypeEnum operationType, BigDecimal amount, String notes, String companyPayment, CategoryEnum category, boolean excess) {
         this.id = id;
         this.dateTimeOperation = dateTimeOperation;
         this.cardName = cardName;
@@ -41,7 +41,7 @@ public class AccountTo {
         return cardName;
     }
 
-    public OperationType getOperationType() {
+    public OperationTypeEnum getOperationType() {
         return operationType;
     }
 
@@ -57,7 +57,7 @@ public class AccountTo {
         return companyPayment;
     }
 
-    public Category getCategory() {
+    public CategoryEnum getCategory() {
         return category;
     }
 

@@ -1,8 +1,7 @@
 package com.budget.web;
 
-import com.budget.enums.OperationType;
-import com.budget.enums.categories.CategoryHealthEnum;
-import com.budget.enums.categories.CategorySportEnum;
+import com.budget.enums.CategoryEnum;
+import com.budget.enums.OperationTypeEnum;
 import com.budget.model.Account;
 import com.budget.repository.AccountRepository;
 import com.budget.repository.InMemoryAccountRepository;
@@ -18,6 +17,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import static org.slf4j.LoggerFactory.getLogger;
@@ -41,11 +42,11 @@ public class AccountServlet extends HttpServlet {
         Account account = new Account(id.isEmpty() ? null : Integer.valueOf(id),
                 LocalDateTime.parse(request.getParameter("dateTime")),
                 request.getParameter("cardName"),
-                OperationType.valueOf(request.getParameter("operationType")),
-                new BigDecimal(request.getParameter("amount")),
-                request.getParameter("notes"),
-                request.getParameter("companyName"),
-                CategorySportEnum.valueOf(request.getParameter("category"))
+                OperationTypeEnum.valueOf(request.getParameter("operationType")),
+                OperationTypeEnum.valueOf(request.getParameter("operationType")) == OperationTypeEnum.EXPENSE ? new BigDecimal(request.getParameter("amount")).abs().negate() : new BigDecimal(request.getParameter("amount")).abs(),
+                request.getParameter("notes").equals("") ? "" : "",
+                request.getParameter("companyPayment"),
+                CategoryEnum.valueOf(request.getParameter("category"))
                 );
 
         log.info(account.isNew() ? "Create {}" : "Update {}", account);
@@ -66,9 +67,11 @@ public class AccountServlet extends HttpServlet {
             }
             case "create", "update" -> {
                 Account account = action.equals("create") ?
-                        new Account(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "someCardName", OperationType.EXPENSE, new BigDecimal("500.0"), "", "", CategoryHealthEnum.DIETARY_SUPPLEMENTS) :
+                        new Account(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "someCardName", OperationTypeEnum.EXPENSE, new BigDecimal("500.0"), "", "", CategoryEnum.OTHERS) :
                         repository.get(getId(request));
                 request.setAttribute("account", account);
+                request.setAttribute("operations", new ArrayList<>(Arrays.asList(OperationTypeEnum.values())));
+                request.setAttribute("categories", new ArrayList<>(Arrays.asList(CategoryEnum.values())));
                 request.getRequestDispatcher("/accountForm.jsp").forward(request, response);
             }
             default -> {

@@ -40,7 +40,17 @@
             </dl>
             <dl>
                 <dt>Operation Type:</dt>
-                <dd><input type="text" value="${account.operationType}" size=40 name="operationType" required></dd>
+                <dd>
+                    <select name="operationType" required>
+                        <c:if test="${account.operationType == null}">
+                            <option selected hidden value=""></option>
+                        </c:if>
+                        <c:forEach items="${operations}" var="operation">
+                            <option ${operation == account.operationType ? "selected" : ""}
+                                    value="${operation}">${operation}</option>
+                        </c:forEach>
+                    </select>
+                </dd>
             </dl>
             <dl>
                 <dt>Amount:</dt>
@@ -56,7 +66,17 @@
             </dl>
             <dl>
                 <dt>Category:</dt>
-                <dd><input type="text" value="${account.category}" size=40 name="category" required></dd>
+                <dd>
+                    <select name="category" required>
+                        <c:if test="${account.category == null}">
+                            <option selected hidden value=""></option>
+                        </c:if>
+                        <c:forEach items="${categories}" var="category">
+                            <option ${category == account.category ? "selected" : ""}
+                            value="${category}">${category}</option>
+                        </c:forEach>
+                    </select>
+                </dd>
             </dl>
             <button type="submit">Save</button>
             <button type="button" onclick="window.history.back()">Cancel</button>

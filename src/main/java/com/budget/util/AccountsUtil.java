@@ -1,9 +1,7 @@
 package com.budget.util;
 
-import com.budget.enums.OperationType;
-import com.budget.enums.categories.CategoryFinanceEnum;
-import com.budget.enums.categories.CategoryHealthEnum;
-import com.budget.enums.categories.CategorySportEnum;
+import com.budget.enums.CategoryEnum;
+import com.budget.enums.OperationTypeEnum;
 import com.budget.model.Account;
 import com.budget.model.AccountTo;
 
@@ -24,19 +22,15 @@ public class AccountsUtil {
     public static final double MONEY_LIMIT_PER_DAY = -500.0;
 
     public static final List<Account> accounts = Arrays.asList(
-            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 7, 32), "MONO", OperationType.EXPENSE, new BigDecimal("-231.86"), "", "Billa", CategorySportEnum.BICYCLE),
-            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 9, 47), "MONO", OperationType.EXPENSE, new BigDecimal("-107.42"), "", "Silpo", CategorySportEnum.BODYBUILDING),
-            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 10, 12), "PRIVAT", OperationType.EXPENSE, new BigDecimal("-50.13"), "", "Fozzy", CategoryHealthEnum.PHARMACY),
-            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 22, 9), "MONO", OperationType.EXPENSE, new BigDecimal("-437.11"), "", "Aliexpress", CategoryFinanceEnum.RETURN),
-            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 7, 8), "MONO", OperationType.INCOME, new BigDecimal("115.4"), "", "Fozzy", CategoryFinanceEnum.RETURN),
-            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 8, 22), "MONO", OperationType.EXPENSE, new BigDecimal("-83.28"), "", "Fozzy", CategorySportEnum.BODYBUILDING),
-            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 14, 49), "PRIVAT", OperationType.EXPENSE, new BigDecimal("-13.1"), "", "Novus", CategoryHealthEnum.PHARMACY),
-            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 20, 0), "MONO", OperationType.INCOME, new BigDecimal("500.0"), "", "OLX", CategoryFinanceEnum.SALE)
+            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 7, 32), "MONO", OperationTypeEnum.EXPENSE, new BigDecimal("-231.86"), "", "Aliexpress", CategoryEnum.BICYCLE),
+            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 9, 47), "MONO", OperationTypeEnum.EXPENSE, new BigDecimal("-107.42"), "", "Silpo", CategoryEnum.GROCERIES),
+            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 10, 12), "PRIVAT", OperationTypeEnum.EXPENSE, new BigDecimal("-50.13"), "", "Billa", CategoryEnum.YUMMY),
+            new Account(LocalDateTime.of(2020, Month.OCTOBER, 31, 22, 9), "MONO", OperationTypeEnum.EXPENSE, new BigDecimal("-437.11"), "", "Fozzy", CategoryEnum.GROCERIES),
+            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 7, 8), "MONO", OperationTypeEnum.INCOME, new BigDecimal("115.4"), "", "Aliexpress", CategoryEnum.RETURN),
+            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 8, 22), "MONO", OperationTypeEnum.EXPENSE, new BigDecimal("-83.28"), "", "Fozzy", CategoryEnum.GROCERIES),
+            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 14, 49), "PRIVAT", OperationTypeEnum.EXPENSE, new BigDecimal("-13.1"), "", "NP", CategoryEnum.SERVICES),
+            new Account(LocalDateTime.of(2020, Month.NOVEMBER, 1, 20, 0), "MONO", OperationTypeEnum.INCOME, new BigDecimal("500.0"), "", "OLX", CategoryEnum.SALE)
     );
-
-    public static void main(String[] args) {
-        System.out.println(getFilteredTos(accounts, -500.0, LocalTime.of(7,0), LocalTime.of(11, 0)));
-    }
 
     public static List<AccountTo> getTos(Collection<Account> accounts, double moneyPerDay) {
         return filterByPredicate(accounts, moneyPerDay, account -> true);

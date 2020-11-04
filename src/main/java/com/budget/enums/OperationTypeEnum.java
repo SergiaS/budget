@@ -1,7 +1,7 @@
 package com.budget.enums;
 
-public enum OperationType {
+public enum OperationTypeEnum {
     INCOME,
     EXPENSE,
-    TRANSFER
+//    TRANSFER
 }
